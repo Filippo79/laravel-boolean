@@ -13,6 +13,57 @@ $categories =  [
             'name' =>'Gialla'
           ]
 ];
+
+$tags = [
+          [
+            'id' => 1,
+            'name' => 'Tag 1'
+          ],
+          [
+            'id' => 2,
+            'name' => 'Tag 2'
+          ],
+          [
+            'id' => 3,
+            'name' => 'Tag 3'
+          ],
+          [
+            'id' => 4,
+            'name' => 'Tag 4'
+          ],
+          [
+            'id' => 5,
+            'name' => 'Tag 5'
+          ],
+          [
+            'id' => 6,
+            'name' => 'Tag 6'
+          ],
+          [
+            'id' => 7,
+            'name' => 'Tag 7'
+          ]
+
+];
+
+$photos = [
+    [
+    'id' => 1,
+    'title' => 'Foto 1',
+    'path' => 'https://picsum.photos/200/300?grayscale'
+    ],
+    [
+    'id' => 2,
+    'title' => 'Foto 2',
+    'path' => 'https://picsum.photos/200/300?random=1'
+    ],
+    [
+    'id' => 3,
+    'title' => 'Foto 3',
+    'path' => 'https://picsum.photos/200/300?random=2'
+    ]
+
+];
 @endphp
 
 @extends('layouts.app')
@@ -62,16 +113,44 @@ $categories =  [
                     @enderror
                     <div class="form-group">
                         <label for="body">Body</label>
-                        <input class="form-control"type="text" id="body" placeholder="Inserisci il testo" value="">
+                        <textarea class="form-control" name="body" id="bopdy" rows="8"></textarea>
                     </div>
                     @error('body')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Tags</legend>
+                            @foreach ($tags as $tag)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
+                                    <label class="form-check-label" for="tag{{$tag['id']}}">{{$tag['name']}}</label>
+                                </div>
+                            @endforeach
+                            @error('tags')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Photos</legend>
+                            @foreach ($photos as $photo)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}">
+                                    <label class="form-check-label" for="photo{{$photo['id']}}">{{$photo['title']}}<img src="{{$photo['path']}}" alt=""></label>
+                                </div>
+                            @endforeach
+                            @error('photos')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="salva">
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
 @endsection

@@ -59,8 +59,8 @@
                     </div>
                 </div>
                 <table class="table table-bordered">
-                    <thead class="thead-light">
-                        <tr class="table-info">
+                    <thead class="thead-dark">
+                        <tr class="">
                             <th>Id</th>
                             <th>Title</th>
                             <th>Cayegory</th>

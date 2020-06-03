@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Rotte Admin
 Route::get('/pages', function () {
     return view('admin.pages.index');
 })->name('admin.pages.index');
@@ -32,3 +33,13 @@ Route::get('/pages/create', function () {
 Route::get('/pages/{page}/edit', function () {
     return view('admin.pages.edit');
 })->name('admin.pages.edit');
+
+Route::get('/photos', function () {
+    return view('admin.photos.index');
+})->name('admin.photos.index');
+
+Route::get('/photos/create', function () {
+    return view('admin.photos.create');
+})->name('admin.photos.create');
+
+Route::post('/photos',  'Admin\PhotoController@store')->name('admin.photos.store');

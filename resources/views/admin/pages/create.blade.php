@@ -88,14 +88,14 @@ $photos = [
                     @method('POST')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control"type="text" id="title" placeholder="Inserisci il titolo" value="">
+                        <input class="form-control"type="text" id="title" placeholder="Inserisci il titolo" name="title"value="">
                     </div>
                     @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <div class="form-group">
                         <label for="summary">Summary</label>
-                        <input class="form-control"type="text" id="summary" placeholder="Inserisci il sommario" value="">
+                        <input class="form-control"type="text" id="summary" placeholder="Inserisci il sommario" name="summary"value="">
                     </div>
                     @error('summary')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -141,7 +141,7 @@ $photos = [
                                     <label class="form-check-label" for="photo{{$photo['id']}}">{{$photo['title']}}<img src="{{$photo['path']}}" alt=""></label>
                                 </div>
                             @endforeach
-                            @error('photos')
+                            @error('path')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </fieldset>
